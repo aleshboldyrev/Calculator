@@ -1,4 +1,4 @@
 public enum Alphabet {
-    ARABIC,
+    ARAB,
     ROMAN
 }

@@ -1,28 +1,25 @@
 public class Action {
-
     public static String calculate(Number first, Number second, String action) throws Exception {
-
         int result;
 
         switch (action) {
             case "+":
-                result = first.getValue() + second.getValue();
+                result = first.getNumber() + second.getNumber();
                 break;
             case "-":
-                result = first.getValue() - second.getValue();
+                result = first.getNumber() - second.getNumber();
                 break;
             case "*":
-                result = first.getValue() * second.getValue();
+                result = first.getNumber() * second.getNumber();
                 break;
             case "/":
-                result = first.getValue() / second.getValue();
+                result = first.getNumber() / second.getNumber();
                 break;
             default:
                 throw new Exception();
         }
-
         if (first.getAlphabet() == Alphabet.ROMAN) {
-            return NumberService.toRomanNumber(result);
+            return Service.toRoman(result);
         } else return String.valueOf(result);
     }
 }

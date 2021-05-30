@@ -1,26 +1,17 @@
 import java.util.Scanner;
 
 public class Calculator {
-        public static void main(String[] args) {
+        public static void main(String[] args) throws Exception {
+                Scanner sc = new Scanner(System.in);
 
-                Scanner scanner = new Scanner(System.in);
+                System.out.println("Input: ");
+                String text = sc.nextLine();
 
-                        System.out.println("Input: ");
-                        String text = scanner.nextLine();
-
-                        try {
-                                String[] sign = text.split(" ");
-                                if (sign.length != 3) throw new Exception();
-
-                                Number a = NumberService.parseAndValidate(sign[0]);
-                                Number b = NumberService.parseAndValidate(sign[2], a.getAlphabet());
-                                String output = Action.calculate(a, b, sign[1]);
-                                System.out.println("Output: \n" + output);
-
-                        } catch (Exception e) {
-                                e.printStackTrace();
-                        }
+                String[] sign = text.split(" ");
+                if (sign.length != 3) throw new Exception();
+                Number first = Service.parseAndValidate(sign[0]);
+                Number second = Service.parseAndValidate(sign[2], first.getAlphabet());
+                String result = Action.calculate(first, second, sign[1]);
+                System.out.println("Output: \n" + result);
         }
 }
-
-
