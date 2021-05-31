@@ -18,6 +18,7 @@ public class Service {
         }
         return new Number(value, alphabet);
     }
+
     static Number parseAndValidate(String sign, Alphabet alphabet) throws Exception {
 
         Number number = parseAndValidate(sign);
@@ -29,18 +30,18 @@ public class Service {
 
 
     private static int findFloor(final int number, final int firstIndex, final int lastIndex) {
-        if(firstIndex==lastIndex)
+        if (firstIndex == lastIndex)
             return firstIndex;
-        if(arabian[firstIndex]==number)
+        if (arabian[firstIndex] == number)
             return firstIndex;
-        if(arabian[lastIndex]==number)
+        if (arabian[lastIndex] == number)
             return lastIndex;
-        final int median=(lastIndex+firstIndex)/2;
-        if(median==firstIndex)
+        final int median = (lastIndex + firstIndex) / 2;
+        if (median == firstIndex)
             return firstIndex;
-        if(number == arabian[median])
+        if (number == arabian[median])
             return median;
-        if(number > arabian[median])
+        if (number > arabian[median])
             return findFloor(number, median, lastIndex);
         else
             return findFloor(number, firstIndex, median);
@@ -48,15 +49,15 @@ public class Service {
     }
 
     public static String toRoman(final int number) {
-        int floorIndex=findFloor(number, 0, arabian.length-1);
-        if(number== arabian[floorIndex])
+        int floorIndex = findFloor(number, 0, arabian.length - 1);
+        if (number == arabian[floorIndex])
             return romanian[floorIndex];
-        return romanian[floorIndex]+toRoman(number- arabian[floorIndex]);
+        return romanian[floorIndex] + toRoman(number - arabian[floorIndex]);
     }
 
     public static int toArabic(String roman) {
         int result = 0;
-        for (int i = arabian.length-1; i >= 0; i-- ) {
+        for (int i = arabian.length - 1; i >= 0; i--) {
             while (roman.indexOf(romanian[i]) == 0 && romanian[i].length() > 0) {
                 result += arabian[i];
                 roman = roman.substring(romanian[i].length());
