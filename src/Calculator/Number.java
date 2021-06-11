@@ -1,3 +1,5 @@
+package Calculator;
+
 public class Number {
     private int number;
     private Alphabet alphabet;

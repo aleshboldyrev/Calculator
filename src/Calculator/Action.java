@@ -1,3 +1,5 @@
+package Calculator;
+
 public class Action {
     public static String calculate(Number first, Number second, String action) throws Exception {
         int result;
